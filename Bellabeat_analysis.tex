@@ -1,0 +1,646 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Bellabeat Case Study},
+  pdfauthor={Abhishek Salaria},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Bellabeat Case Study}
+\author{Abhishek Salaria}
+\date{2022-05-23}
+
+\begin{document}
+\maketitle
+
+\hypertarget{introduction}{%
+\subsubsection{Introduction}\label{introduction}}
+
+Bellabeat is a high-tech manufacturer of health-focused products for
+women. It is a successful small company, but they have the potential to
+become a larger player in the global smart device market. Urška Sršen,
+cofounder and Chief Creative Officer of Bellabeat, believes that
+analyzing smart device fitness data could help unlock new growth
+opportunities for the company.
+
+\hypertarget{business-requirement}{%
+\subsubsection{Business Requirement}\label{business-requirement}}
+
+In this case study we'll analyze smart device data to gain insight into
+how consumers are using their smart devices. The insights will then help
+guide marketing strategy for the company. Analysis will be shared to the
+Bellabeat executive team along with high-level recommendations for
+Bellabeat's marketing strategy.
+
+\hypertarget{ask-phase}{%
+\subsubsection{Ask Phase}\label{ask-phase}}
+
+We are asked to analyze smart device usage data in order to gain insight
+into how consumers use non-Bellabeat smart devices.\\
+\textbf{Questions}\\
+1. What are some trends in smart device usage?\\
+2. How could these trends apply to Bellabeat customers?\\
+3. How could these trends help influence Bellabeat marketing strategy?\\
+
+\hypertarget{prepare}{%
+\subsubsection{Prepare}\label{prepare}}
+
+In this bussiness task, we will use FitBit Fitness Tracker Data (CC0:
+Public Domain, dataset made available through Mobius): that contains
+personal fitness tracker from thirty fitbit users. Thirty eligible
+Fitbit users consented to the submission of personal tracker data,
+including minute-level output for physical activity, heart rate, and
+sleep monitoring. It includes information about daily activity, steps,
+and heart rate that can be used to explore users' habits.\\
+\textbf{Data Organization}\\
+The Dataset contains 18 csv files (15 long-format + 3 wide-format). Each
+file contains different information such as sleep, calories, steps,
+distance, heart rate, Intensities on different timelines such as second,
+min, hour and day. Also, daily activity file contains all the data
+contained in all daily-type files apart from sleep and weight data.\\
+To make things easier we'll be focusing on hour and day time frame.\\
+\textbf{Data Limitations}\\
+1. It contains only 33 user samples.\\
+2. It lacks demographic data of costumers.
+
+\hypertarget{process}{%
+\subsubsection{Process}\label{process}}
+
+\hypertarget{loading-packages}{%
+\paragraph{Loading Packages}\label{loading-packages}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(readr)}
+\FunctionTok{library}\NormalTok{(reshape2)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{loading-datasets}{%
+\paragraph{Loading Datasets}\label{loading-datasets}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dailyActivity }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"dailyActivity\_merged.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 940 Columns: 15
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr  (1): ActivityDate
+## dbl (14): Id, TotalSteps, TotalDistance, TrackerDistance, LoggedActivitiesDi...
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hourlyCalories }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"hourlyCalories\_merged.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 22099 Columns: 3
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr (1): ActivityHour
+## dbl (2): Id, Calories
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sleepDay }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"sleepDay\_merged.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 413 Columns: 5
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr (1): SleepDay
+## dbl (4): Id, TotalSleepRecords, TotalMinutesAsleep, TotalTimeInBed
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hourlyIntensities }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"hourlyIntensities\_merged.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 22099 Columns: 4
+## -- Column specification --------------------------------------------------------
+## Delimiter: ","
+## chr (1): ActivityHour
+## dbl (3): Id, TotalIntensity, AverageIntensity
+## 
+## i Use `spec()` to retrieve the full column specification for this data.
+## i Specify the column types or set `show_col_types = FALSE` to quiet this message.
+\end{verbatim}
+
+\hypertarget{preprocessing-hourlycalories}{%
+\paragraph{Preprocessing
+hourlyCalories}\label{preprocessing-hourlycalories}}
+
+Preprocessing hourlyCalories to seperate date, day and hour from
+activity date.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hourlyCalories}\SpecialCharTok{$}\NormalTok{ActivityDate }\OtherTok{\textless{}{-}} \FunctionTok{strptime}\NormalTok{(hourlyCalories}\SpecialCharTok{$}\NormalTok{ActivityHour,}
+                                        \StringTok{"\%m/\%d/\%Y \%I:\%M:\%S \%p"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{format}\NormalTok{(}\StringTok{"\%m/\%d/\%Y"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{as.Date}\NormalTok{(}\AttributeTok{format =} \StringTok{"\%m/\%d/\%Y"}\NormalTok{)}
+
+\NormalTok{hourlyCalories}\SpecialCharTok{$}\NormalTok{ActivityDay }\OtherTok{\textless{}{-}} \FunctionTok{weekdays}\NormalTok{(}\FunctionTok{as.Date}\NormalTok{(hourlyCalories}\SpecialCharTok{$}\NormalTok{ActivityDate))}
+
+\NormalTok{hourlyCalories}\SpecialCharTok{$}\NormalTok{ActivityHour }\OtherTok{\textless{}{-}} \FunctionTok{strptime}\NormalTok{(hourlyCalories}\SpecialCharTok{$}\NormalTok{ActivityHour,}
+                                        \StringTok{"\%m/\%d/\%Y \%I:\%M:\%S \%p"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{format}\NormalTok{(}\StringTok{"\%H:\%M:\%S"}\NormalTok{)}
+
+\NormalTok{hourlyCalories }\OtherTok{\textless{}{-}}\NormalTok{ hourlyCalories }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{relocate}\NormalTok{(Calories, }\AttributeTok{.after =}\NormalTok{ ActivityDay)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{preprocessing-sleepday}{%
+\paragraph{Preprocessing sleepDay}\label{preprocessing-sleepday}}
+
+Preprocessing SleepDay to convert the date to weekday format.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sleepDay}\SpecialCharTok{$}\NormalTok{SleepDay }\OtherTok{\textless{}{-}} \FunctionTok{strptime}\NormalTok{(sleepDay}\SpecialCharTok{$}\NormalTok{SleepDay,}
+                                        \StringTok{"\%m/\%d/\%Y \%I:\%M:\%S \%p"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{format}\NormalTok{(}\StringTok{"\%m/\%d/\%Y"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{as.Date}\NormalTok{(}\AttributeTok{format =} \StringTok{"\%m/\%d/\%Y"}\NormalTok{)}
+
+\NormalTok{sleepDay}\SpecialCharTok{$}\NormalTok{SleepDay }\OtherTok{\textless{}{-}} \FunctionTok{weekdays}\NormalTok{(}\FunctionTok{as.Date}\NormalTok{(sleepDay}\SpecialCharTok{$}\NormalTok{SleepDay))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{preprocessing-hourlyintensities}{%
+\paragraph{Preprocessing
+hourlyIntensities}\label{preprocessing-hourlyintensities}}
+
+Preprocessing hourlyIntensities to convert ActivityHour to hms format.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{hourlyIntensities}\SpecialCharTok{$}\NormalTok{ActivityHour }\OtherTok{\textless{}{-}} \FunctionTok{strptime}\NormalTok{(hourlyIntensities}\SpecialCharTok{$}\NormalTok{ActivityHour,}
+                                        \StringTok{"\%m/\%d/\%Y \%I:\%M:\%S \%p"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{format}\NormalTok{(}\StringTok{"\%H:\%M:\%S"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{analysis-and-share}{%
+\subsubsection{Analysis and Share}\label{analysis-and-share}}
+
+\textbf{Walking Habit of Each Person.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(dailyActivity,}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{ActivityDate,}\AttributeTok{y=}\NormalTok{TotalSteps,}\AttributeTok{color=}\NormalTok{Id)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} 
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{hjust=}\DecValTok{1}\NormalTok{),}
+        \AttributeTok{legend.position=}\StringTok{"none"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{facet\_wrap}\NormalTok{(}\SpecialCharTok{\textasciitilde{}}\NormalTok{Id) }\SpecialCharTok{+} \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.title.x=}\FunctionTok{element\_blank}\NormalTok{(),}
+                          \AttributeTok{axis.text.x=}\FunctionTok{element\_blank}\NormalTok{(),}
+                          \AttributeTok{axis.ticks.x=}\FunctionTok{element\_blank}\NormalTok{()) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Walking Habit of Each Person"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Bellabeat_analysis_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+\hypertarget{summary-of-daily-activities}{%
+\paragraph{Summary of Daily
+Activities}\label{summary-of-daily-activities}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dailyActivity }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(TotalSteps,TrackerDistance,VeryActiveDistance,}
+\NormalTok{         ModeratelyActiveDistance,LightActiveDistance, SedentaryActiveDistance,}
+\NormalTok{         VeryActiveMinutes,FairlyActiveMinutes,LightlyActiveMinutes,}
+\NormalTok{         SedentaryMinutes,Calories) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summary}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    TotalSteps    TrackerDistance  VeryActiveDistance ModeratelyActiveDistance
+##  Min.   :    0   Min.   : 0.000   Min.   : 0.000     Min.   :0.0000          
+##  1st Qu.: 3790   1st Qu.: 2.620   1st Qu.: 0.000     1st Qu.:0.0000          
+##  Median : 7406   Median : 5.245   Median : 0.210     Median :0.2400          
+##  Mean   : 7638   Mean   : 5.475   Mean   : 1.503     Mean   :0.5675          
+##  3rd Qu.:10727   3rd Qu.: 7.710   3rd Qu.: 2.053     3rd Qu.:0.8000          
+##  Max.   :36019   Max.   :28.030   Max.   :21.920     Max.   :6.4800          
+##  LightActiveDistance SedentaryActiveDistance VeryActiveMinutes
+##  Min.   : 0.000      Min.   :0.000000        Min.   :  0.00   
+##  1st Qu.: 1.945      1st Qu.:0.000000        1st Qu.:  0.00   
+##  Median : 3.365      Median :0.000000        Median :  4.00   
+##  Mean   : 3.341      Mean   :0.001606        Mean   : 21.16   
+##  3rd Qu.: 4.782      3rd Qu.:0.000000        3rd Qu.: 32.00   
+##  Max.   :10.710      Max.   :0.110000        Max.   :210.00   
+##  FairlyActiveMinutes LightlyActiveMinutes SedentaryMinutes    Calories   
+##  Min.   :  0.00      Min.   :  0.0        Min.   :   0.0   Min.   :   0  
+##  1st Qu.:  0.00      1st Qu.:127.0        1st Qu.: 729.8   1st Qu.:1828  
+##  Median :  6.00      Median :199.0        Median :1057.5   Median :2134  
+##  Mean   : 13.56      Mean   :192.8        Mean   : 991.2   Mean   :2304  
+##  3rd Qu.: 19.00      3rd Qu.:264.0        3rd Qu.:1229.5   3rd Qu.:2793  
+##  Max.   :143.00      Max.   :518.0        Max.   :1440.0   Max.   :4900
+\end{verbatim}
+
+\hypertarget{positive-relationship-between-total-steps-total-distance}{%
+\paragraph{Positive Relationship between Total Steps \& Total
+Distance}\label{positive-relationship-between-total-steps-total-distance}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(dailyActivity,}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{TotalSteps,}\AttributeTok{y=}\NormalTok{TotalDistance)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_smooth}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Relationship Between Steps and Distance"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+\end{verbatim}
+
+\includegraphics{Bellabeat_analysis_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\hypertarget{positive-relationship-between-total-steps-calories-burnt}{%
+\paragraph{Positive Relationship between Total Steps \& Calories
+Burnt}\label{positive-relationship-between-total-steps-calories-burnt}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(dailyActivity,}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{TotalSteps,}\AttributeTok{y=}\NormalTok{Calories)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{geom\_smooth}\NormalTok{() }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Relationship Between Steps and Calories Burnt"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+\end{verbatim}
+
+\includegraphics{Bellabeat_analysis_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\hypertarget{hourly-average-calories-burnt}{%
+\paragraph{Hourly Average Calories
+Burnt}\label{hourly-average-calories-burnt}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{average\_hourly\_Data }\OtherTok{\textless{}{-}}\NormalTok{ hourlyCalories }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(ActivityHour,Calories) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(ActivityHour) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise\_all}\NormalTok{(}\AttributeTok{.funs =}\NormalTok{ mean)}
+
+\FunctionTok{ggplot}\NormalTok{(average\_hourly\_Data,}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{ActivityHour,}\AttributeTok{y=}\NormalTok{Calories,}\AttributeTok{color=}\NormalTok{ActivityHour)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{fill=}\StringTok{\textquotesingle{}\#00008B\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{hjust=}\DecValTok{1}\NormalTok{),}
+        \AttributeTok{legend.position=}\StringTok{"none"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Relationship Between Activity Hour and Calories Burnt"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Bellabeat_analysis_files/figure-latex/unnamed-chunk-10-1.pdf}\\
+\textbf{Summary of Calories Burnt Hourly}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{average\_hourly\_Data }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(Calories) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summary}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Calories     
+##  Min.   : 67.54  
+##  1st Qu.: 80.68  
+##  Median :102.85  
+##  Mean   : 97.50  
+##  3rd Qu.:113.82  
+##  Max.   :123.49
+\end{verbatim}
+
+\hypertarget{daily-average-calories-burnt}{%
+\paragraph{Daily Average Calories
+Burnt}\label{daily-average-calories-burnt}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{average\_daily\_Data }\OtherTok{\textless{}{-}}\NormalTok{ hourlyCalories }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(ActivityDay,Calories) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(ActivityDay) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise\_all}\NormalTok{(}\AttributeTok{.funs =}\NormalTok{ mean)}
+
+\FunctionTok{ggplot}\NormalTok{(average\_daily\_Data,}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\FunctionTok{ordered}\NormalTok{(ActivityDay, }
+                                        \AttributeTok{levels=}\FunctionTok{c}\NormalTok{(}\StringTok{"Monday"}\NormalTok{, }\StringTok{"Tuesday"}\NormalTok{, }\StringTok{"Wednesday"}\NormalTok{, }\StringTok{"Thursday"}\NormalTok{,}
+                                                 \StringTok{"Friday"}\NormalTok{, }\StringTok{"Saturday"}\NormalTok{, }\StringTok{"Sunday"}\NormalTok{)), }
+                              \AttributeTok{y=}\NormalTok{Calories,}\AttributeTok{color=}\NormalTok{ActivityDay)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{fill=}\StringTok{\textquotesingle{}\#00008B\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"ActivityDay"}\NormalTok{) }\SpecialCharTok{+} 
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position=}\StringTok{"none"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Relationship Between Weekday and Average Hourly Calories Burnt"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Bellabeat_analysis_files/figure-latex/unnamed-chunk-12-1.pdf}\\
+\textbf{Summary of Calories Burnt Daily}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{average\_daily\_Data }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(Calories) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summary}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Calories    
+##  Min.   :94.34  
+##  1st Qu.:96.94  
+##  Median :97.05  
+##  Mean   :97.36  
+##  3rd Qu.:98.20  
+##  Max.   :99.87
+\end{verbatim}
+
+\hypertarget{daily-sleeping-habit}{%
+\paragraph{Daily Sleeping Habit}\label{daily-sleeping-habit}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{average\_sleep\_Data }\OtherTok{\textless{}{-}}\NormalTok{ sleepDay }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(SleepDay,TotalMinutesAsleep,TotalTimeInBed) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(SleepDay) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise\_all}\NormalTok{(}\AttributeTok{.funs =}\NormalTok{ mean)}
+\NormalTok{average\_sleep\_Data}\SpecialCharTok{$}\NormalTok{TimeTakenToSleep }\OtherTok{\textless{}{-}}\NormalTok{ average\_sleep\_Data}\SpecialCharTok{$}\NormalTok{TotalTimeInBed }\SpecialCharTok{{-}}\NormalTok{ average\_sleep\_Data}\SpecialCharTok{$}\NormalTok{TotalMinutesAsleep}
+\end{Highlighting}
+\end{Shaded}
+
+\hfill\break
+\textbf{Total Minutes Slept Each day}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(average\_sleep\_Data,}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\FunctionTok{ordered}\NormalTok{(SleepDay, }
+                                        \AttributeTok{levels=}\FunctionTok{c}\NormalTok{(}\StringTok{"Monday"}\NormalTok{, }\StringTok{"Tuesday"}\NormalTok{, }\StringTok{"Wednesday"}\NormalTok{, }\StringTok{"Thursday"}\NormalTok{,}
+                                                 \StringTok{"Friday"}\NormalTok{, }\StringTok{"Saturday"}\NormalTok{, }\StringTok{"Sunday"}\NormalTok{)), }
+                              \AttributeTok{y=}\NormalTok{TotalMinutesAsleep,}\AttributeTok{color=}\NormalTok{SleepDay)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{fill=}\StringTok{\textquotesingle{}\#00008B\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"SleepDay"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position=}\StringTok{"none"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Total minutes Asleep Each day"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Bellabeat_analysis_files/figure-latex/unnamed-chunk-15-1.pdf}\\
+\textbf{Total Time Taken to Sleep Each day}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(average\_sleep\_Data,}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\FunctionTok{ordered}\NormalTok{(SleepDay, }
+                                        \AttributeTok{levels=}\FunctionTok{c}\NormalTok{(}\StringTok{"Monday"}\NormalTok{, }\StringTok{"Tuesday"}\NormalTok{, }\StringTok{"Wednesday"}\NormalTok{, }\StringTok{"Thursday"}\NormalTok{,}
+                                                 \StringTok{"Friday"}\NormalTok{, }\StringTok{"Saturday"}\NormalTok{, }\StringTok{"Sunday"}\NormalTok{)), }
+                              \AttributeTok{y=}\NormalTok{TimeTakenToSleep,}\AttributeTok{color=}\NormalTok{SleepDay)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{fill=}\StringTok{\textquotesingle{}\#00008B\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"SleepDay"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position=}\StringTok{"none"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Time Taken To Sleep Each Day"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Bellabeat_analysis_files/figure-latex/unnamed-chunk-16-1.pdf}\\
+\textbf{Total Minutes Slept vs Total Time in Bed Each day}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(}\FunctionTok{melt}\NormalTok{(average\_sleep\_Data[,}\FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}SleepDay\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}TotalMinutesAsleep\textquotesingle{}}\NormalTok{,}\StringTok{\textquotesingle{}TotalTimeInBed\textquotesingle{}}\NormalTok{)]}
+\NormalTok{            ,}\AttributeTok{id.vars =} \DecValTok{1}\NormalTok{),}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{ordered}\NormalTok{(SleepDay, }
+                                   \AttributeTok{levels=}\FunctionTok{c}\NormalTok{(}\StringTok{"Monday"}\NormalTok{, }\StringTok{"Tuesday"}\NormalTok{, }\StringTok{"Wednesday"}\NormalTok{, }\StringTok{"Thursday"}\NormalTok{,}
+                                            \StringTok{"Friday"}\NormalTok{, }\StringTok{"Saturday"}\NormalTok{, }\StringTok{"Sunday"}\NormalTok{))}
+\NormalTok{                       ,}\AttributeTok{y =}\NormalTok{ value)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_bar}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{fill =}\NormalTok{ variable),}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{,}\AttributeTok{position =} \StringTok{"dodge"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"SleepDay"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Total Time"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Total Minutes Asleep VS Total Minutes In Bed (Each Day)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Bellabeat_analysis_files/figure-latex/unnamed-chunk-17-1.pdf}\\
+\textbf{Summary of Sleeping Habits}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{average\_sleep\_Data }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(TotalMinutesAsleep,TotalTimeInBed,TimeTakenToSleep) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summary}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  TotalMinutesAsleep TotalTimeInBed  TimeTakenToSleep
+##  Min.   :402.4      Min.   :435.8   Min.   :33.43   
+##  1st Qu.:405.0      1st Qu.:444.2   1st Qu.:36.34   
+##  Median :418.8      Median :456.2   Median :38.75   
+##  Mean   :419.9      Mean   :459.3   Mean   :39.39   
+##  3rd Qu.:427.7      3rd Qu.:465.7   3rd Qu.:40.05   
+##  Max.   :452.7      Max.   :503.5   Max.   :50.76
+\end{verbatim}
+
+\hypertarget{hourly-intensities}{%
+\paragraph{Hourly Intensities}\label{hourly-intensities}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{average\_Intensities\_Data }\OtherTok{\textless{}{-}}\NormalTok{ hourlyIntensities }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{select}\NormalTok{(ActivityHour,TotalIntensity,AverageIntensity) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(ActivityHour) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise\_all}\NormalTok{(}\AttributeTok{.funs =}\NormalTok{ mean)}
+
+\FunctionTok{ggplot}\NormalTok{(average\_Intensities\_Data,}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{ActivityHour,}\AttributeTok{y=}\NormalTok{AverageIntensity, }\AttributeTok{color=}\NormalTok{ActivityHour)) }\SpecialCharTok{+} 
+  \FunctionTok{geom\_bar}\NormalTok{(}\AttributeTok{stat =} \StringTok{"identity"}\NormalTok{, }\AttributeTok{fill=}\StringTok{\textquotesingle{}\#00008B\textquotesingle{}}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{axis.text.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{vjust =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{hjust=}\DecValTok{1}\NormalTok{),}
+        \AttributeTok{legend.position=}\StringTok{"none"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"Relationship Between Intensity and Activity Hour"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Bellabeat_analysis_files/figure-latex/unnamed-chunk-19-1.pdf}
+
+\hypertarget{conclusion}{%
+\paragraph{Conclusion}\label{conclusion}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  On Average People walks 7638 steps Everyday.\\
+\item
+  On Average People burns 2304 calories Everyday.\\
+\item
+  People Spend most time on bed on Sundays.\\
+\item
+  People Sleep for most time on Sundays.\\
+\item
+  People Burns Highest number of Calories on Saturdays.\\
+\item
+  People are highly active from 5:00-7:00 pm whereas they are least
+  active from 2:00-4:00 am.\\
+\item
+  On an average people burns 97.50 calories each hour.\\
+\item
+  On an average people sleeps for 419.9 mins or 6.998 hrs (7 hrs
+  Approximately) with minimum of 402.4 mins or 6.70 hrs and maximum of
+  452.7 mins or 7.545 hrs.\\
+\item
+  People are highly intensive from 5:00-7:00 pm whereas they are least
+  intensive from 2:00-4:00 am (Similar to activity hours).\\
+\item
+  Approximately People takes 39.9 mins to sleep which is increased to
+  50.76 mins on Sundays.
+\end{enumerate}
+
+\hypertarget{act}{%
+\subsubsection{Act}\label{act}}
+
+\hypertarget{recommendations}{%
+\paragraph{Recommendations}\label{recommendations}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  People walks 7638 steps everyday which can be increased to 10000 Steps
+  as per the recommendations of CDC to lower mortality rate and improve
+  health. So, through bellabeat app, peoples can be notified about the
+  number of steps that is required to be completed and also the benefits
+  associated with it.\\
+\item
+  On an average people are sleeping around 7 hours as per our analysis
+  that is the minimum time an adult should sleep as per CDC, so anyone
+  sleeping less than that should be sent notification about improving
+  sleeping time and also some posts showing benefits of a good sleep.\\
+\item
+  Peoples taking more time to sleep can be suggested with some useful
+  tips such as yoga or healthy eating habits so as to improve their
+  sleep time and overall health.
+\item
+  People can be given inapp rewards such as titles, increasing levels
+  etc., based on different milestones they achieve everyday such as
+  completing the number of required steps each day so as to encourage
+  them.\\
+\item
+  In addition to all above recommendations, age related information of
+  users can be collected so that recommendation according to age can be
+  made, like number of steps, sleep required for teenage, adult and old
+  people.
+\end{enumerate}
+
+\end{document}
